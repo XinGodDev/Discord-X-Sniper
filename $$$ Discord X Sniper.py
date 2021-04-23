@@ -4,15 +4,15 @@ from colorama import Fore, init, Style
 import requests, discord, os, unidecode, json
 init()
 
-def Clear():
-	return os.system("cls")
+def PrintLogo():
+	os.system("cls" if os.name == "nt" else "clear")
+	print(f"""{Fore.LIGHTMAGENTA_EX}
+	\t\t\t\t\t╔╦╗╦╔═╗╔═╗╔═╗╦═╗╔╦╗  ═╗ ╦  ╔═╗╔╗╔╦╔═╗╔═╗╦═╗
+	\t\t\t\t\t ║║║╚═╗║  ║ ║╠╦╝ ║║  ╔╩╦╝  ╚═╗║║║║╠═╝║╣ ╠╦╝
+	\t\t\t\t\t═╩╝╩╚═╝╚═╝╚═╝╩╚══╩╝  ╩ ╚═  ╚═╝╝╚╝╩╩  ╚═╝╩╚═""")
 
-with open('config.json') as f:
-    cfg = json.load(f)
-token = cfg.get("token")
-Clear()
-
-print(Fore.LIGHTMAGENTA_EX + """\t\t\t\t\t╔╦╗╦╔═╗╔═╗╔═╗╦═╗╔╦╗  ═╗ ╦  ╔═╗╔╗╔╦╔═╗╔═╗╦═╗\n\t\t\t\t\t ║║║╚═╗║  ║ ║╠╦╝ ║║  ╔╩╦╝  ╚═╗║║║║╠═╝║╣ ╠╦╝\n\t\t\t\t\t═╩╝╩╚═╝╚═╝╚═╝╩╚══╩╝  ╩ ╚═  ╚═╝╝╚╝╩╩  ╚═╝╩╚═""")
+PrintLogo()
+token = input("Token :")
 
 client = commands.Bot(command_prefix = "!", self_bot = True)
 
